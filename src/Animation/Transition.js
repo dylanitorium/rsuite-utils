@@ -96,7 +96,13 @@ class Transition extends React.Component<Props, State> {
 
   componentDidMount() {
     if (this.props.transitionAppear && this.props.in) {
-      this.performEnter(this.props);
+      if (timeout) {
+        setTimeout(() => {
+          this.performEnter(this.props);
+        }, timeout);
+      } else {
+        this.performEnter(this.props);
+      }
     }
   }
 
